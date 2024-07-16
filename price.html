@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="price.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div><h1>Price Slider</h1></div><br>
+        <div class="display">0</div>
+        <div class="Minclass">
+            <input type="range" step="2" id="slider" min="0" max="100" value="0">
+            <div>Min: <span id="span1">0</span></div>
+            <div>Max: <span id="span2">100</span></div>
+            <div>
+                <input type="number" id="minv">
+                <input type="number" id="maxv">
+            </div>
+            <div><button id="b">Set Range</button></div>
+        </div>
+    </div>
+
+    <script src="price.js"></script>
+</body>
+</html>

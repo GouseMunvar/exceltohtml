@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 1rem;
+        }
+        .navbar-brand a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        .navbar-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .navbar-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+        }
+        .navbar-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar-item a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: background 0.3s;
+        }
+        .navbar-item a:hover {
+            background-color: #575757;
+        }
+        @media (max-width: 768px) {
+            .navbar-toggle {
+                display: flex;
+            }
+            .navbar-menu {
+                flex-direction: column;
+                display: none;
+                width: 100%;
+            }
+            .navbar-menu.active {
+                display: flex;
+            }
+            .navbar-item {
+                text-align: center;
+                padding: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="#">MyWebsite</a>
+        </div>
+        <div class="navbar-toggle" id="navbar-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="navbar-menu" id="navbar-menu">
+            <li class="navbar-item"><a href="#">Home</a></li>
+            <li class="navbar-item"><a href="#">About</a></li>
+            <li class="navbar-item"><a href="#">Services</a></li>
+            <li class="navbar-item"><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbarToggle = document.getElementById('navbar-toggle');
+            const navbarMenu = document.getElementById('navbar-menu');
+
+            navbarToggle.addEventListener('click', function () {
+                navbarMenu.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel to HTML Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Excel to HTML Table Converter</h1>
+    <!-- Input element for file upload -->
+    <input type="file" id="upload" />
+    <!-- Div element to display the converted HTML table -->
+    <div id="output"></div>
+
+    <!-- Including the SheetJS (xlsx) library from a CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script>
+        // Adding an event listener to the file input element to handle file selection
+        document.getElementById('upload').addEventListener('change', handleFile, false);
+
+        // Function to handle the file input change event
+        function handleFile(e) {
+            // Getting the selected file from the input element
+            const file = e.target.files[0];
+            
+            // Creating a FileReader object to read the file
+            const reader = new FileReader();
+
+            // Defining the onload event for the FileReader
+            reader.onload = function(e) {
+                // Reading the file data as a Uint8Array
+                const data = new Uint8Array(e.target.result);
+
+                // Using the SheetJS (xlsx) library to read the Excel file data
+                const workbook = XLSX.read(data, { type: 'array' });
+
+                // Getting the name of the first sheet in the workbook
+                const firstSheetName = workbook.SheetNames[0];
+
+                // Getting the first sheet data
+                const worksheet = workbook.Sheets[firstSheetName];
+
+                // Converting the sheet data to HTML format
+                const html = XLSX.utils.sheet_to_html(worksheet, { id: "excel-table" });
+
+                // Displaying the HTML content in the output div
+                document.getElementById('output').innerHTML = html;
+            };
+
+            // Reading the selected file as an ArrayBuffer
+            reader.readAsArrayBuffer(file);
+        }
+    </script>
+</body>
+</html>

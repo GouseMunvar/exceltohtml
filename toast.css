@@ -1,0 +1,40 @@
+body{
+    background-color: aquamarine;
+
+}
+buttons{
+    margin:50px;
+}
+.buttons button{
+    background-color: antiquewhite;
+    color:black;
+    border:0;
+    outline:0;
+    width: 120px;
+    height:40px;
+    margin:5x;
+    cursor:pointer;
+}
+#toastbox{
+    position:absolute;
+    bottom:40px;
+    right:40px;
+    display:flex;
+    align-items:flex-end;
+    flex-direction: column;
+    
+    padding: 20px;
+    background-color: blue;
+
+}
+.toast{
+    width:400px;
+    height:80px;
+    background:#fff;
+    font-weight: 500;
+    margin:15px 0;
+    box-shadow: 0 0  20px rgba(0,0,0,0.3) ;
+    display:flex;
+    align-items:center;
+
+}

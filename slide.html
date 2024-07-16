@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Double Range Price Slider</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .slider-container {
+            width: 300px;
+            position: relative;
+        }
+
+        .range-track {
+            width: 100%;
+            height: 5px;
+            background: #d3d3d3;
+            position: absolute;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .range-input {
+            -webkit-appearance: none;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            background: none;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .range-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+            pointer-events: auto;
+            position: relative;
+        }
+
+        .range-input::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+            pointer-events: auto;
+            position: relative;
+        }
+
+        .range-values {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="range-track"></div>
+        <input type="range" id="range-min" class="range-input" min="0" max="1000" value="100" step="10">
+        <input type="range" id="range-max" class="range-input" min="0" max="1000" value="900" step="10">
+        <div class="range-values">
+            <span id="range-min-value">$100</span>
+            <span id="range-max-value">$900</span>
+        </div>
+    </div>
+    <script>
+        const rangeMin = document.getElementById('range-min');
+        const rangeMax = document.getElementById('range-max');
+        const rangeMinValue = document.getElementById('range-min-value');
+        const rangeMaxValue = document.getElementById('range-max-value');
+        const gap = 10; // minimum gap between the sliders
+
+        function updateValues() {
+            const minValue = parseInt(rangeMin.value);
+            const maxValue = parseInt(rangeMax.value);
+
+            if (minValue + gap >= maxValue) {
+                rangeMax.value = minValue + gap;
+            } else if (maxValue - gap <= minValue) {
+                rangeMin.value = maxValue - gap;
+            }
+
+            rangeMinValue.textContent = `$${rangeMin.value}`;
+            rangeMaxValue.textContent = `$${rangeMax.value}`;
+
+            updateTrack();
+        }
+
+        function updateTrack() {
+            const rangeTrack = document.querySelector('.range-track');
+            const minPercent = (rangeMin.value / rangeMin.max) * 100;
+            const maxPercent = (rangeMax.value / rangeMax.max) * 100;
+            rangeTrack.style.background = `linear-gradient(to right, #d3d3d3 ${minPercent}%, #4CAF50 ${minPercent}%, #4CAF50 ${maxPercent}%, #d3d3d3 ${maxPercent}%)`;
+        }
+
+        rangeMin.addEventListener('input', updateValues);
+        rangeMax.addEventListener('input', updateValues);
+
+        // Initial call to set values
+        updateValues();
+    </script>
+</body>
+</html>

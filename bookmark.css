@@ -1,0 +1,66 @@
+/* Body styles */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh; /* Ensures body takes full viewport height */
+    margin: 0; /* Remove default margin */
+}
+
+/* Container styles */
+.container {
+    width: 900px;
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Input field styles */
+.inputfield {
+    width: 700px;
+    height: 60px;
+    background-color: aqua;
+    border: 2px solid red;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* Adjust top margin for spacing */
+}
+
+/* Input styles */
+#input {
+    width: 300px;
+    height: 30px;
+    margin-right: 10px; /* Adjust margin for spacing */
+}
+
+/* Button styles */
+#addb, #delb {
+    width: 100px;
+    height: 25px;
+    padding: 5px;
+    margin-right: 10px; /* Adjust margin for spacing */
+    border-radius: 5px;
+    color: white;
+}
+
+#addb {
+    background-color: green;
+    border: 2px solid black; /* Ensure consistent border style */
+}
+
+#delb {
+    background-color: red;
+    border: 2px solid aliceblue; /* Ensure consistent border style */
+}
+
+/* Bookmarks container styles */
+.bookmarks {
+    width: 700px;
+    height: 300px;
+    margin-top: 20px; /* Adjust top margin for spacing */
+    border: 2px solid red;
+}
